@@ -6,7 +6,7 @@ export default function () {
       <h1>FOSS services</h1>
       <Suspense fallback={<p>Loading...</p>}>
         <h2>foss.farchiver.xyz/hub</h2>
-        <h3>return a random open read-only Hub</h3>
+        <h3>returns url of a random open read-only Hub</h3>
         <hr />
         <h3>
           hosted by{' '}
