@@ -1,5 +1,9 @@
-export function onRequest(context) {
-  return new Response(
-    JSON.stringify({ url: 'https://nemes.farcaster.xyz:2281', ssl: true })
-  )
+import { Env, HubDetail } from './types'
+
+export const onRequest: PagesFunction<Env> = async (context) => {
+  const { request, env } = context
+
+  const hubs: HubDetail[] = JSON.parse(await env.KV.get('hubs'))
+
+  return new Response(JSON.stringify(hubs[0]))
 }
