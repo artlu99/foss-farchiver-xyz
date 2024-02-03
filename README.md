@@ -1,9 +1,10 @@
-# Frontend code template in `preact`
+# FOSS services at farchiver.xyz
 
-This template is to be used for frontend applications.
+Frontend code based on borodut.ch frontend starter template.
 
 ## Features
 
+- Cloudflare Workers + KV
 - State management with `jotai`
 - Around 13.53kb after brotli compression (this includes **everything**) 😱
 - `preact` under the hood with `preact/compat` makes it compatible with virtually any `react` library but still makes it faster

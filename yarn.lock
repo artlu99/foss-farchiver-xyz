@@ -527,6 +527,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cloudflare/workers-types@npm:^4.20240129.0":
+  version: 4.20240129.0
+  resolution: "@cloudflare/workers-types@npm:4.20240129.0"
+  checksum: 9d702f8c53c04d952ace255b438dfd098369f46efc063de8c0d937eac95e22b103941262e59dcdf6d524394ae797af5c94e972ff47cbd03bc30f408656a640cf
+  languageName: node
+  linkType: hard
+
 "@cspotcode/source-map-support@npm:^0.8.0":
   version: 0.8.1
   resolution: "@cspotcode/source-map-support@npm:0.8.1"
@@ -3045,6 +3052,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend-starter@workspace:."
   dependencies:
+    "@cloudflare/workers-types": "npm:^4.20240129.0"
     "@preact/preset-vite": "npm:^2.8.1"
     "@tailwindcss/typography": "npm:^0.5.10"
     "@types/node": "npm:^20.11.0"
