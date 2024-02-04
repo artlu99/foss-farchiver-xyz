@@ -26,7 +26,7 @@ export default function () {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {`${host}/hub`}
+              {`${host}/${e.endpoint}`}
             </a>
           </h2>
         </div>
