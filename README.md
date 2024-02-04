@@ -13,7 +13,7 @@ Backend on Cloudflare Workers + KV. Frontend based on borodut.ch frontend starte
 2. create CNAME DNS record pointing (sub-)domain to the deployment
 3. bind KV namespace to variable `KV` in this Pages deployment 
 4. call the `hubs/reset` endpoint to pre-populate KV
-5. update KV store from existing instances, e.g., [foss.farchiver.xyz](https://foss.farchiver.xyz/hub)
+5. update KV store from existing instances, e.g., [foss.farchiver.xyz](https://foss.farchiver.xyz/hubs/list)
 
 
 ## Local launch
