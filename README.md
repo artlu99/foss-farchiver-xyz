@@ -1,20 +1,20 @@
 # FOSS services at farchiver.xyz
 
-Frontend code based on borodut.ch frontend starter template.
+Lightweight services to benefit the ecosystem. Designed to work permissionlessly and decentralized, with maintenance-light responsibilities.
 
-## Features
+Permission granted to clone, fork or copy, as per MIT license.
 
-- Cloudflare Workers + KV
-- State management with `jotai`
-- Around 13.53kb after brotli compression (this includes **everything**) 😱
-- `preact` under the hood with `preact/compat` makes it compatible with virtually any `react` library but still makes it faster
-- Full TypeScript support — no dangling types
-- `vite` packager and devtools make building and development lightning fast
-- `tailwind-css` built-in with 'daisyui'
-- GitHub Actions that lint and check the code on pull requests
-- `prettier` and `eslint` configured, enabled and formatting your code on save
-- List of recommended extensions for VSCode
-- It is important to keep the bundle small, so a `stats.html` file is generated on `yarn build` to visually show you the bundle size
+Backend on Cloudflare Workers + KV. Frontend based on borodut.ch frontend starter template.
+
+
+## Host-side setup
+
+1. deploy Cloudflare Pages by pointing to this Git repository
+    1a. create CNAME DNS record pointing (sub-)domain to the deployment
+2. bind KV namespace to variable `KV` in this Pages deployment 
+3. call the `initiate` endpoint to pre-populate KV
+4. update KV store from existing instances, e.g., [foss.farchiver.xyz](https://foss.farchiver.xyz/hub)
+
 
 ## Local launch
 
