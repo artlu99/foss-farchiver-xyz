@@ -4,7 +4,9 @@ export interface Env {
 }
 
 export type HubDetail = {
-    url: string
-    ssl: boolean
-  }
-  
+  shortname: string
+  url: string
+  ssl: boolean
+  fid: number
+  version: string
+}
