@@ -1,5 +1,5 @@
 import { Suspense } from 'preact/compat'
-import Catalog from 'components/catalog'
+import Catalog from 'components/Catalog'
 
 export default function () {
   const host: string = import.meta.env['VITE_HOST']
