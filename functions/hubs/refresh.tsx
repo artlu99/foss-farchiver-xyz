@@ -14,12 +14,16 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         const url =
           (h.ssl ? 'https' : 'http') + '://' + h.url + '/v1/info?dbstats=1'
 
-        const res = (await (await fetch(url)).json()) as HubGetInfoResponse
-        const updatedHubDetail = {
-          ...h,
-          version: res.version,
+        try {
+          const res = (await (await fetch(url)).json()) as HubGetInfoResponse
+          const updatedHubDetail = {
+            ...h,
+            version: res.version,
+          }
+          return updatedHubDetail}
+        catch {
+          return h
         }
-        return updatedHubDetail
       }
     })
   )
