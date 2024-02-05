@@ -43,8 +43,19 @@ const HubsViewer = () => {
         hubs.map(async (h) => {
           const url =
             (h.ssl ? 'https' : 'http') + '://' + h.url + '/v1/info?dbstats=1'
-          const res = await axios.get(url)
-          return await res.data
+          try {
+            const res = await axios.get(url)
+            return await res.data
+          } catch (e) {
+            return {
+              hubOperatorFid: h.fid,
+              isSyncing: false,
+              nickname: h.shortname,
+              peerId: 'unreachable',
+              rootHash: 'unreachable',
+              version: '?',
+            }
+          }
         })
       )
       setData(details)
@@ -54,22 +65,47 @@ const HubsViewer = () => {
 
   return (
     <div>
-      {data.length === 0 ? 'loading...' : ''}
-      {data.map((d) => {
-        const nickname = d.nickname
-        const shortname =
-          nickname === 'Farcaster Hub'
-            ? hubs.find((h) => h.fid === d.hubOperatorFid)?.shortname ??
-              'not found'
-            : nickname
-        return (
-          <div>
-            <h3>{`${shortname} (fid: ${d.hubOperatorFid})`}</h3>
-            <p>{`version: ${d.version}`}</p>
-            <p>{`${JSON.stringify(d.dbStats)}`}</p>
-          </div>
-        )
-      })}
+      {data.length === 0 ? (
+        'loading...'
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>name</th>
+              <th style={{ textAlign: 'center' }}>version</th>
+              <th style={{ textAlign: 'center' }}>Messages</th>
+              <th style={{ textAlign: 'center' }}>FidEvents</th>
+              <th style={{ textAlign: 'center' }}>FnameEvents</th>
+              <th style={{ textAlign: 'right' }}>fid</th>
+            </tr>
+          </thead>
+
+          {data.map((d) => {
+            const nickname = d.nickname
+            const shortname =
+              nickname === 'Farcaster Hub'
+                ? hubs.find((h) => h.fid === d.hubOperatorFid)?.shortname ??
+                  'not found'
+                : nickname
+            const numMessages = (d.dbStats?.numMessages ?? 0).toLocaleString()
+            const numFidEvents = (d.dbStats?.numFidEvents ?? 0).toLocaleString()
+            const numFnameEvents = (
+              d.dbStats?.numFnameEvents ?? 0
+            ).toLocaleString()
+            const fid = d.hubOperatorFid.toLocaleString()
+            return (
+              <tr>
+                <td>{`${shortname}`}</td>
+                <td style={{ textAlign: 'center' }}>{`${d.version}`}</td>
+                <td style={{ textAlign: 'center' }}>{`${numMessages}`}</td>
+                <td style={{ textAlign: 'center' }}>{`${numFidEvents}`}</td>
+                <td style={{ textAlign: 'center' }}>{`${numFnameEvents}`}</td>
+                <td style={{ textAlign: 'right' }}>{`${fid}`}</td>
+              </tr>
+            )
+          })}
+        </table>
+      )}
     </div>
   )
 }
