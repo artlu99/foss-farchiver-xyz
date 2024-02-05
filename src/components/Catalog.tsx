@@ -12,7 +12,7 @@ const endpoints: Endpoint[] = [
   },
 ]
 
-export default function () {
+const Catalog = () => {
   const host: string = import.meta.env['VITE_HOST']
 
   return (
@@ -34,3 +34,4 @@ export default function () {
     </div>
   )
 }
+export default Catalog

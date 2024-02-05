@@ -10,17 +10,3 @@ export type HubDetail = {
   fid: number
   version: string
 }
-
-export type HubGetInfoResponse = {
-  dbStats?: {
-    numFidEvents: number
-    numFnameEvents: number
-    numMessages: number
-  }
-  hubOperatorFid: number
-  isSyncing: boolean
-  nickname: string
-  peerId: string
-  rootHash: string
-  version: string
-}

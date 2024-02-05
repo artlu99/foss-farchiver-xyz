@@ -11,6 +11,7 @@
     "preview": "yarn build && yarn vite preview"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "jotai": "^2.6.1",
     "preact": "^10.19.3"
   },
