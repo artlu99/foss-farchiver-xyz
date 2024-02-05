@@ -66,9 +66,9 @@ const HubsViewer = () => {
               rootHash: 'unreachable',
               version: h.version,
               dbStats: {
-                numFidEvents: 'not ssl',
-                numFnameEvents: 'interrogate',
-                numMessages: 'directly',
+                numMessages: 'not ssl',
+                numFidEvents: 'interrogate',
+                numFnameEvents: 'directly',
               },
             }
           }
