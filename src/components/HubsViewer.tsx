@@ -7,6 +7,7 @@ interface HubDetail {
   ssl: boolean
   fid: number
   version: string
+  hide?: boolean
 }
 
 interface HubGetInfoResponse {
@@ -41,19 +42,29 @@ const HubsViewer = () => {
     async function fetchData() {
       const details = await Promise.all(
         hubs.map(async (h) => {
-          const url =
-            (h.ssl ? 'https' : 'http') + '://' + h.url + '/v1/info?dbstats=1'
-          try {
-            const res = await axios.get(url)
-            return await res.data
-          } catch (e) {
+          if (h.ssl) {
+            const url = `https://${h.url}/v1/info?dbstats=1`
+            try {
+              const res = await axios.get(url)
+              return await res.data
+            } catch (e) {
+              return {
+                hubOperatorFid: h.fid,
+                isSyncing: false,
+                nickname: h.shortname,
+                peerId: 'unreachable',
+                rootHash: 'unreachable',
+                version: '?',
+              }
+            }
+          } else {
             return {
               hubOperatorFid: h.fid,
               isSyncing: false,
               nickname: h.shortname,
               peerId: 'unreachable',
               rootHash: 'unreachable',
-              version: '?',
+              version: h.version,
             }
           }
         })
