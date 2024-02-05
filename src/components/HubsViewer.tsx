@@ -65,6 +65,11 @@ const HubsViewer = () => {
               peerId: 'unreachable',
               rootHash: 'unreachable',
               version: h.version,
+              dbStats: {
+                numFidEvents: 'not ssl',
+                numFnameEvents: 'interrogate',
+                numMessages: 'directly',
+              },
             }
           }
         })
