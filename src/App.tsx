@@ -1,4 +1,5 @@
 import { Suspense, useState } from 'preact/compat'
+import Advert from 'components/Advert'
 import Catalog from 'components/Catalog'
 import HubsViewer from 'components/HubsViewer'
 
@@ -33,6 +34,7 @@ export default function () {
           </a>
           .
         </h3>
+        {selected === 'CATALOG' ? null : <Advert />}
       </Suspense>
     </div>
   )
