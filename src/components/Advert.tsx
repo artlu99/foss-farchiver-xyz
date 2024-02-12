@@ -4,6 +4,9 @@ import axios from 'axios'
 
 const endpoint = 'https://fcan.xyz/getadsfor?fid=20638&src=foss.farchiver.xyz'
 const fcanUserSettingsLink = () => 'https://fcan.xyz/settings'
+const fcanTransparencyLink = (id: string | undefined) => {
+  if (id) 'https://fcan.xyz/transparency?id=' + id
+}
 
 interface FCANResponse {
   id: string
@@ -49,7 +52,7 @@ const Advert = () => {
             <div className="navbar bg-base-100">
               <div className="flex-1">
                 <a className="btn btn-ghost text-xl">
-                  <div className="badge">
+                  <div className="badge" onClick={() = openInNewTab(fcanTransparencyLink(data?.id))}>
                     {'🎩'.repeat(data?.rewardsMultiple ?? 0)}
                   </div>
                 </a>
