@@ -50,7 +50,7 @@ const Advert = () => {
             <div className="navbar bg-base-100">
               <div className="flex-1">
                 <a className="btn btn-ghost text-xl">
-                  <div className="badge" onClick={() = openInNewTab(fcanTransparencyLink(data?.id))}>
+                  <div className="badge" onClick={() => openInNewTab(fcanTransparencyLink(data?.id))}>
                     {'🎩'.repeat(data?.rewardsMultiple ?? 0)}
                   </div>
                 </a>
