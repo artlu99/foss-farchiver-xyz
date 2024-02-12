@@ -4,9 +4,7 @@ import axios from 'axios'
 
 const endpoint = 'https://fcan.xyz/getadsfor?fid=20638&src=foss.farchiver.xyz'
 const fcanUserSettingsLink = () => 'https://fcan.xyz/settings'
-const fcanTransparencyLink = (id: string | undefined) => {
-  if (id) 'https://fcan.xyz/transparency?id=' + id
-}
+const fcanTransparencyLink = (id: string | undefined) => 'https://fcan.xyz/transparency?id=' + (id ?? 0)
 
 interface FCANResponse {
   id: string
