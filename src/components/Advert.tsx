@@ -50,23 +50,34 @@ const Advert = () => {
           <div className="card-body">
             <div className="navbar bg-base-100">
               <div className="flex-1">
-                <a className="btn btn-ghost text-xl">
-                  <div
-                    className="badge"
-                    onClick={() => openInNewTab(fcanTransparencyLink(data?.id))}
-                  >
-                    {'🎩'.repeat(data?.rewardsMultiple ?? 0)}
-                  </div>
-                </a>
+                <div
+                  className="lg:tooltip lg:tooltip-left"
+                  data-tip="rewards multiple"
+                >
+                  <a className="btn btn-ghost text-xl">
+                    <div
+                      className="badge"
+                      onClick={() =>
+                        openInNewTab(fcanTransparencyLink(data?.id))
+                      }
+                    >
+                      {'🎩'.repeat(data?.rewardsMultiple ?? 0)}
+                    </div>
+                  </a>
+                </div>
               </div>
               <div className="flex-none">
-                <button
-                  className="btn btn-square btn-ghost"
-                  onClick={() => openInNewTab(fcanUserSettingsLink())}
+                <div
+                  className="lg:tooltip lg:tooltip-right"
+                  data-tip="user-specific settings"
                 >
-                  <SettingsIcon />{' '}
-                </button>
-                <div className="badge"></div>
+                  <button
+                    className="btn btn-circle btn-ghost"
+                    onClick={() => openInNewTab(fcanUserSettingsLink())}
+                  >
+                    <SettingsIcon />
+                  </button>
+                </div>
               </div>
             </div>
             <div>
@@ -76,20 +87,30 @@ const Advert = () => {
             {data ? (
               <div className="card-actions justify-center">
                 {data.displayUrl ? (
-                  <button
-                    className="btn btn-accent"
-                    onClick={() => openInNewTab(data.displayUrl)}
+                  <div
+                    className="lg:tooltip lg:tooltip-bottom"
+                    data-tip={data.displayUrl}
                   >
-                    Click through without Tracking
-                  </button>
+                    <button
+                      className="btn btn-accent"
+                      onClick={() => openInNewTab(data.displayUrl)}
+                    >
+                      Click through without Tracking
+                    </button>
+                  </div>
                 ) : null}
                 {data.attribUrl ? (
-                  <button
-                    className="btn btn-outline btn-primary"
-                    onClick={() => openInNewTab(data.attribUrl)}
+                  <div
+                    className="lg:tooltip lg:tooltip-bottom"
+                    data-tip={'FCAN offers rewards to view ' + data.displayUrl}
                   >
-                    Click through with Rewards
-                  </button>
+                    <button
+                      className="btn btn-outline btn-primary"
+                      onClick={() => openInNewTab(data.attribUrl)}
+                    >
+                      Click through with Rewards
+                    </button>
+                  </div>
                 ) : null}
               </div>
             ) : null}{' '}
