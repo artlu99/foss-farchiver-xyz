@@ -4,7 +4,8 @@ import axios from 'axios'
 
 const endpoint = 'https://fcan.xyz/getadsfor?fid=20638&src=foss.farchiver.xyz'
 const fcanUserSettingsLink = () => 'https://fcan.xyz/settings'
-const fcanTransparencyLink = (id: string | undefined) => 'https://fcan.xyz/transparency?id=' + (id ?? 0)
+const fcanTransparencyLink = (id: string | undefined) =>
+  'https://fcan.xyz/transparency?id=' + (id ?? 0)
 
 interface FCANResponse {
   id: string
@@ -50,7 +51,10 @@ const Advert = () => {
             <div className="navbar bg-base-100">
               <div className="flex-1">
                 <a className="btn btn-ghost text-xl">
-                  <div className="badge" onClick={() => openInNewTab(fcanTransparencyLink(data?.id))}>
+                  <div
+                    className="badge"
+                    onClick={() => openInNewTab(fcanTransparencyLink(data?.id))}
+                  >
                     {'🎩'.repeat(data?.rewardsMultiple ?? 0)}
                   </div>
                 </a>
@@ -69,20 +73,24 @@ const Advert = () => {
               <h2 className="card-title">{data?.head ?? null}</h2>
               <p>{data?.text ?? null}</p>
             </div>
-            {data?.displayUrl ? (
+            {data ? (
               <div className="card-actions justify-center">
-                <button
-                  className="btn btn-accent"
-                  onClick={() => openInNewTab(data?.displayUrl)}
-                >
-                  Click through without Tracking
-                </button>
-                <button
-                  className="btn btn-outline btn-primary"
-                  onClick={() => openInNewTab(data?.attribUrl)}
-                >
-                  Click through with Rewards
-                </button>
+                {data.displayUrl ? (
+                  <button
+                    className="btn btn-accent"
+                    onClick={() => openInNewTab(data.displayUrl)}
+                  >
+                    Click through without Tracking
+                  </button>
+                ) : null}
+                {data.attribUrl ? (
+                  <button
+                    className="btn btn-outline btn-primary"
+                    onClick={() => openInNewTab(data.attribUrl)}
+                  >
+                    Click through with Rewards
+                  </button>
+                ) : null}
               </div>
             ) : null}{' '}
           </div>
