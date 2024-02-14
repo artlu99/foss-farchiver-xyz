@@ -12,13 +12,7 @@ export default function () {
     <div className="container mx-auto max-w-prose p-10 prose">
       <h1>Farchiver FOSS Services</h1>
       <Suspense fallback={<p>Loading...</p>}>
-        <div className="collapse collapse-arrow border border-base-300">
-          <input type="checkbox" checked />
-          <div className="collapse-title text-xl font-medium">Viewer</div>
-          <div className="collapse-content">
-            <HubsViewer />
-          </div>
-        </div>
+        <HubsViewer />
         <hr />
         <div className="collapse collapse-arrow border border-base-300">
           <input type="checkbox" />

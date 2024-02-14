@@ -41,7 +41,7 @@ const Advert = () => {
             <div className="navbar bg-base-100">
               <div className="flex-1">
                 <div
-                  className="tooltip tooltip-left"
+                  className="tooltip tooltip-bottom"
                   data-tip="rewards multiple"
                 >
                   <a className="btn btn-ghost text-xl">
@@ -58,7 +58,7 @@ const Advert = () => {
               </div>
               <div className="flex-none">
                 <div
-                  className="tooltip tooltip-right"
+                  className="tooltip tooltip-top"
                   data-tip="user-specific settings"
                 >
                   <button
@@ -78,7 +78,7 @@ const Advert = () => {
               <div className="card-actions justify-center">
                 {data.displayUrl ? (
                   <div
-                    className="tooltip tooltip-bottom"
+                    className="tooltip tooltip-top lg:tooltip-bottom"
                     data-tip={data.displayUrl}
                   >
                     <button
