@@ -1,3 +1,4 @@
+import { allowCorsResponse, newResponse } from './helpers'
 import { Env, HubDetail } from './types'
 
 const getRandomHub = (hubs: HubDetail[]) => {
@@ -9,8 +10,12 @@ const getRandomHub = (hubs: HubDetail[]) => {
 export const onRequest: PagesFunction<Env> = async (context) => {
   const { request, env } = context
 
+  if (request.method === 'OPTIONS') {
+    return allowCorsResponse()
+  }
+
   const hubs: HubDetail[] = JSON.parse(await env.KV.get('hubs'))
 
   const randomHub = getRandomHub(hubs)
-  return new Response(JSON.stringify(randomHub))
+  return newResponse(JSON.stringify(randomHub))
 }

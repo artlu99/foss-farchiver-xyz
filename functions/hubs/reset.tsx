@@ -1,7 +1,7 @@
 import { Env } from '../types'
 
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const { request, env } = context
+  const { env } = context
 
   await env.KV.put(
     'hubs',
