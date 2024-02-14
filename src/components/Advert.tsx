@@ -96,7 +96,9 @@ const Advert = () => {
                   >
                     <button
                       className="btn btn-outline btn-primary"
-                      onClick={() => openInNewTab(data.attribUrl)}
+                      onClick={() =>
+                        openInNewTab(`https://fcan.xyz/r?id=${data.id}`)
+                      }
                     >
                       Click through with Rewards
                     </button>
