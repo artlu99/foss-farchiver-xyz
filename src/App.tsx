@@ -21,7 +21,7 @@ export default function () {
         </div>
         <hr />
         <div className="collapse collapse-arrow border border-base-300">
-          <input type="checkbox" checked />
+          <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">Catalog</div>
           <div className="collapse-content">
             <Catalog />
