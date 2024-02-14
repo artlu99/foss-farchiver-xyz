@@ -35,23 +35,13 @@ const Advert = () => {
     return (
       <div>
         <hr />
-        <h5>
-          advertising experiment via{' '}
-          <a
-            href="https://fcan.xyz"
-            alt="🕸️ FCAN"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            FCAN 🕸️
-          </a>
-        </h5>
+        <h5>Advertising experiment:</h5>
         <div className="card card-compact w-100% bg-base-100 shadow-xl">
           <div className="card-body">
             <div className="navbar bg-base-100">
               <div className="flex-1">
                 <div
-                  className="lg:tooltip lg:tooltip-left"
+                  className="tooltip tooltip-left"
                   data-tip="rewards multiple"
                 >
                   <a className="btn btn-ghost text-xl">
@@ -68,7 +58,7 @@ const Advert = () => {
               </div>
               <div className="flex-none">
                 <div
-                  className="lg:tooltip lg:tooltip-right"
+                  className="tooltip tooltip-right"
                   data-tip="user-specific settings"
                 >
                   <button
@@ -88,7 +78,7 @@ const Advert = () => {
               <div className="card-actions justify-center">
                 {data.displayUrl ? (
                   <div
-                    className="lg:tooltip lg:tooltip-bottom"
+                    className="tooltip tooltip-bottom"
                     data-tip={data.displayUrl}
                   >
                     <button
@@ -101,7 +91,7 @@ const Advert = () => {
                 ) : null}
                 {data.attribUrl ? (
                   <div
-                    className="lg:tooltip lg:tooltip-bottom"
+                    className="tooltip tooltip-bottom"
                     data-tip={'FCAN offers rewards to view ' + data.displayUrl}
                   >
                     <button
@@ -116,6 +106,18 @@ const Advert = () => {
             ) : null}{' '}
           </div>
         </div>
+        <h5 className="text-right">
+          via{' '}
+          <a
+            href="https://fcan.xyz"
+            alt="🕸️ FCAN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="no-underline"
+          >
+            FCAN 🕸️
+          </a>
+        </h5>
       </div>
     )
   }

@@ -80,49 +80,54 @@ const HubsViewer = () => {
   }, [hubs])
 
   return (
-    <div>
-      {data.length === 0 ? (
-        'loading...'
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>name</th>
-              <th style={{ textAlign: 'center' }}>version</th>
-              <th style={{ textAlign: 'center' }}>Messages</th>
-              <th style={{ textAlign: 'center' }}>FidEvents</th>
-              <th style={{ textAlign: 'center' }}>FnameEvents</th>
-              <th style={{ textAlign: 'right' }}>fid</th>
-            </tr>
-          </thead>
-
-          {data.map((d) => {
-            const nickname = d.nickname
-            const shortname =
-              nickname === 'Farcaster Hub'
-                ? hubs.find((h) => h.fid === d.hubOperatorFid)?.shortname ??
-                  'not found'
-                : nickname
-            const numMessages = (d.dbStats?.numMessages ?? 0).toLocaleString()
-            const numFidEvents = (d.dbStats?.numFidEvents ?? 0).toLocaleString()
-            const numFnameEvents = (
-              d.dbStats?.numFnameEvents ?? 0
-            ).toLocaleString()
-            const fid = d.hubOperatorFid.toLocaleString()
-            return (
+    <>
+      <h2>Farcaster Hubs Viewer</h2>
+      <div>
+        {data.length === 0 ? (
+          'loading...'
+        ) : (
+          <table>
+            <thead>
               <tr>
-                <td>{`${shortname}`}</td>
-                <td style={{ textAlign: 'center' }}>{`${d.version}`}</td>
-                <td style={{ textAlign: 'center' }}>{`${numMessages}`}</td>
-                <td style={{ textAlign: 'center' }}>{`${numFidEvents}`}</td>
-                <td style={{ textAlign: 'center' }}>{`${numFnameEvents}`}</td>
-                <td style={{ textAlign: 'right' }}>{`${fid}`}</td>
+                <th>name</th>
+                <th style={{ textAlign: 'center' }}>version</th>
+                <th style={{ textAlign: 'center' }}>Messages</th>
+                <th style={{ textAlign: 'center' }}>FidEvents</th>
+                <th style={{ textAlign: 'center' }}>FnameEvents</th>
+                <th style={{ textAlign: 'right' }}>fid</th>
               </tr>
-            )
-          })}
-        </table>
-      )}
-    </div>
+            </thead>
+
+            {data.map((d) => {
+              const nickname = d.nickname
+              const shortname =
+                nickname === 'Farcaster Hub'
+                  ? hubs.find((h) => h.fid === d.hubOperatorFid)?.shortname ??
+                    'not found'
+                  : nickname
+              const numMessages = (d.dbStats?.numMessages ?? 0).toLocaleString()
+              const numFidEvents = (
+                d.dbStats?.numFidEvents ?? 0
+              ).toLocaleString()
+              const numFnameEvents = (
+                d.dbStats?.numFnameEvents ?? 0
+              ).toLocaleString()
+              const fid = d.hubOperatorFid.toLocaleString()
+              return (
+                <tr>
+                  <td>{`${shortname}`}</td>
+                  <td style={{ textAlign: 'center' }}>{`${d.version}`}</td>
+                  <td style={{ textAlign: 'center' }}>{`${numMessages}`}</td>
+                  <td style={{ textAlign: 'center' }}>{`${numFidEvents}`}</td>
+                  <td style={{ textAlign: 'center' }}>{`${numFnameEvents}`}</td>
+                  <td style={{ textAlign: 'right' }}>{`${fid}`}</td>
+                </tr>
+              )
+            })}
+          </table>
+        )}
+      </div>
+    </>
   )
 }
 export default HubsViewer

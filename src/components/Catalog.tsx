@@ -16,22 +16,25 @@ const Catalog = () => {
   const host: string = import.meta.env['VITE_HOST']
 
   return (
-    <div>
-      {endpoints.map((e) => (
-        <div>
-          <h3>{e.description}</h3>
-          <h2>
-            <a
-              href={`${host}/${e.endpoint}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {`${host}/${e.endpoint}`}
-            </a>
-          </h2>
-        </div>
-      ))}
-    </div>
+    <>
+      <h2>API endpoints</h2>
+      <div>
+        {endpoints.map((e) => (
+          <div>
+            <h4>{e.description}</h4>
+            <h3>
+              <a
+                href={`${host}/${e.endpoint}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {`${host}/${e.endpoint}`}
+              </a>
+            </h3>
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 export default Catalog
