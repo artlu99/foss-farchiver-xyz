@@ -56,7 +56,10 @@ const HubsViewer = () => {
           if (h.ssl) {
             const url = `https://${h.url}/v1/info?dbstats=1`
             try {
-              const res = await axios.get(url)
+              const res = await axios.get(url, {
+                timeout: 1000,
+                signal: AbortSignal.timeout(1000),
+              })
               const data = await res.data
               return {
                 ...data,
@@ -144,7 +147,9 @@ const HubsViewer = () => {
                   <td className="text-center">{`${numFnameEvents}`}</td>
                   <td className="text-right">{`${fid}`}</td>
                   <td className="text-center">{`${d.write === undefined ? '-' : d.write ? 'y' : 'n'}`}</td>
-                  <td className="text-left">{`${d.contact ? linkify(d.contact) : '-'}`}</td>
+                  <td className="text-left">
+                    {d.contact ? linkify(d.contact) : '-'}
+                  </td>
                 </tr>
               )
             })}
