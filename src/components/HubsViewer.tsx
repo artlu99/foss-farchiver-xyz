@@ -30,6 +30,13 @@ interface HubGetInfoResponse {
 
 const endpoint = '/hubs/list'
 
+const linkify = (url: string | undefined) =>
+  url ? (
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      {url}
+    </a>
+  ) : undefined
+
 const HubsViewer = () => {
   const [hubs, setHubs] = useState<HubDetail[]>([])
   const [data, setData] = useState<HubGetInfoResponse[]>([])
@@ -109,7 +116,7 @@ const HubsViewer = () => {
                 <th className="text-center">FnameEvents</th>
                 <th className="text-right">fid</th>
                 <th className="text-center">R/W</th>
-                <th className="text-center">contact</th>
+                <th className="text-left">contact</th>
               </tr>
             </thead>
 
@@ -137,7 +144,7 @@ const HubsViewer = () => {
                   <td className="text-center">{`${numFnameEvents}`}</td>
                   <td className="text-right">{`${fid}`}</td>
                   <td className="text-center">{`${d.write === undefined ? '-' : d.write ? 'y' : 'n'}`}</td>
-                  <td className="text-center">{`${d.contact ?? '-'}`}</td>
+                  <td className="text-left">{`${d.contact ? linkify(d.contact) : '-'}`}</td>
                 </tr>
               )
             })}
