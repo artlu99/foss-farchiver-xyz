@@ -9,5 +9,7 @@ export type HubDetail = {
   ssl: boolean
   fid: number
   version: string
+  contact?: string
+  write?: boolean
   hide?: boolean
 }

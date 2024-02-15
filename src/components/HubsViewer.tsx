@@ -7,6 +7,8 @@ interface HubDetail {
   ssl: boolean
   fid: number
   version: string
+  contact?: string
+  write?: boolean
   hide?: boolean
 }
 
@@ -22,6 +24,8 @@ interface HubGetInfoResponse {
   peerId: string
   rootHash: string
   version: string
+  contact?: string
+  write?: boolean
 }
 
 const endpoint = '/hubs/list'
@@ -46,7 +50,12 @@ const HubsViewer = () => {
             const url = `https://${h.url}/v1/info?dbstats=1`
             try {
               const res = await axios.get(url)
-              return await res.data
+              const data = await res.data
+              return {
+                ...data,
+                contact: h.contact,
+                write: h.write,
+              }
             } catch (e) {
               return {
                 hubOperatorFid: h.fid,
@@ -55,6 +64,8 @@ const HubsViewer = () => {
                 peerId: 'unreachable',
                 rootHash: 'unreachable',
                 version: '?',
+                contact: h.contact,
+                write: h.write,
               }
             }
           } else {
@@ -70,6 +81,8 @@ const HubsViewer = () => {
                 numFidEvents: 'interrogate',
                 numFnameEvents: 'directly',
               },
+              contact: h.contact,
+              write: h.write,
             }
           }
         })
@@ -90,11 +103,13 @@ const HubsViewer = () => {
             <thead>
               <tr>
                 <th>name</th>
-                <th style={{ textAlign: 'center' }}>version</th>
-                <th style={{ textAlign: 'center' }}>Messages</th>
-                <th style={{ textAlign: 'center' }}>FidEvents</th>
-                <th style={{ textAlign: 'center' }}>FnameEvents</th>
-                <th style={{ textAlign: 'right' }}>fid</th>
+                <th className="text-center">version</th>
+                <th className="text-center">Messages</th>
+                <th className="text-center">FidEvents</th>
+                <th className="text-center">FnameEvents</th>
+                <th className="text-right">fid</th>
+                <th className="text-center">R/W</th>
+                <th className="text-center">contact</th>
               </tr>
             </thead>
 
@@ -116,11 +131,13 @@ const HubsViewer = () => {
               return (
                 <tr>
                   <td>{`${shortname}`}</td>
-                  <td style={{ textAlign: 'center' }}>{`${d.version}`}</td>
-                  <td style={{ textAlign: 'center' }}>{`${numMessages}`}</td>
-                  <td style={{ textAlign: 'center' }}>{`${numFidEvents}`}</td>
-                  <td style={{ textAlign: 'center' }}>{`${numFnameEvents}`}</td>
-                  <td style={{ textAlign: 'right' }}>{`${fid}`}</td>
+                  <td className="text-center">{`${d.version}`}</td>
+                  <td className="text-center">{`${numMessages}`}</td>
+                  <td className="text-center">{`${numFidEvents}`}</td>
+                  <td className="text-center">{`${numFnameEvents}`}</td>
+                  <td className="text-right">{`${fid}`}</td>
+                  <td className="text-center">{`${d.write === undefined ? '-' : d.write ? 'y' : 'n'}`}</td>
+                  <td className="text-center">{`${d.contact ?? '-'}`}</td>
                 </tr>
               )
             })}
