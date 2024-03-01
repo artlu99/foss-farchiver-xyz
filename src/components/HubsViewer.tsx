@@ -57,8 +57,8 @@ const HubsViewer = () => {
             const url = `https://${h.url}/v1/info?dbstats=1`
             try {
               const res = await axios.get(url, {
-                timeout: 1000,
-                signal: AbortSignal.timeout(1000),
+                timeout: 2000,
+                signal: AbortSignal.timeout(2000),
               })
               const data = await res.data
               return {
