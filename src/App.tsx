@@ -1,4 +1,3 @@
-import Advert from "components/Advert";
 import Catalog from "components/Catalog";
 import HubsViewer from "components/HubsViewer";
 import { Suspense } from "preact/compat";
@@ -31,7 +30,6 @@ export default function () {
 					</a>
 					.
 				</h4>
-				<Advert />
 			</Suspense>
 		</div>
 	);
