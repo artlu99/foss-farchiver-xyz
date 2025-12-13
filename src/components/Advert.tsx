@@ -112,7 +112,7 @@ const Advert = () => {
           via{' '}
           <a
             href="https://fcan.xyz"
-            alt="🕸️ FCAN"
+            aria-label="🕸️ FCAN"
             target="_blank"
             rel="noopener noreferrer"
             className="no-underline"
