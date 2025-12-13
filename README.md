@@ -18,5 +18,5 @@ Backend on Cloudflare Workers + KV. Frontend based on borodut.ch frontend starte
 
 ## Local launch
 
-1. Install dependencies with `yarn`
-2. Run the server with `yarn start`
+1. Install dependencies with `bun i`
+2. Run the server with `bun dev`

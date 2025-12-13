@@ -1,6 +1,7 @@
 node_modules
 dist
 stats.html
+*.tsbuildinfo
 
 # local env files
 .env

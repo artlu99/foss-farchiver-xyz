@@ -5,14 +5,13 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_ENV=production tsc && vite build",
-    "dev": "yarn build && yarn vite preview",
-    "lint": "biome check . --write"
+    "dev": "yarn build && yarn vite preview"
   },
   "dependencies": {
-    "axios": "^1.13.2",
     "jotai": "^2.16.0",
     "lucide-react": "^0.561.0",
-    "preact": "^10.28.0"
+    "preact": "^10.28.0",
+    "redaxios": "^0.5.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20251213.0",
