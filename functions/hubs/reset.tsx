@@ -1,20 +1,20 @@
-import { Env } from '../types'
+import type { Env } from "../types";
 
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const { env } = context
+	const { env } = context;
 
-  await env.KV.put(
-    'hubs',
-    JSON.stringify([
-      {
-        shortname: 'nemes',
-        url: 'nemes.farcaster.xyz:2281',
-        ssl: true,
-        fid: 9152,
-        version: '1.9.5',
-      },
-    ])
-  )
+	await env.KV.put(
+		"hubs",
+		JSON.stringify([
+			{
+				shortname: "nemes",
+				url: "nemes.farcaster.xyz:2281",
+				ssl: true,
+				fid: 9152,
+				version: "1.9.5",
+			},
+		]),
+	);
 
-  return new Response(JSON.stringify({ status: 'complete' }))
-}
+	return new Response(JSON.stringify({ status: "complete" }));
+};

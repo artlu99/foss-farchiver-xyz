@@ -1,17 +1,17 @@
-import { allowCorsResponse, newResponse } from '../helpers'
-import { Env, HubDetail } from '../types'
+import { allowCorsResponse, newResponse } from "../helpers";
+import type { Env, HubDetail } from "../types";
 
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const { request, env } = context
+	const { request, env } = context;
 
-  if (request.method === 'OPTIONS') {
-    return allowCorsResponse()
-  }
+	if (request.method === "OPTIONS") {
+		return allowCorsResponse();
+	}
 
-  const hubs: HubDetail[] = JSON.parse(await env.KV.get('hubs'))
+	const hubs: HubDetail[] = JSON.parse(await env.KV.get("hubs"));
 
-  const sorted = hubs.sort((a, b) => (a.version > b.version ? -1 : 1))
-  const publicHubs = sorted.filter((h) => h.hide === undefined)
+	const sorted = hubs.sort((a, b) => (a.version > b.version ? -1 : 1));
+	const publicHubs = sorted.filter((h) => h.hide === undefined);
 
-  return newResponse(JSON.stringify(publicHubs))
-}
+	return newResponse(JSON.stringify(publicHubs));
+};
